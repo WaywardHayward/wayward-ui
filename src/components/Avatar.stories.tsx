@@ -28,7 +28,7 @@ export const WithImage: Story = {
 
 export const WithInitials: Story = {
   args: {
-    name: 'Alex Smith',
+    initials: 'AS',
     alt: 'Alex Smith',
   },
 };
@@ -51,7 +51,7 @@ export const Large: Story = {
 
 export const Fallback: Story = {
   args: {
-    name: 'John Doe',
+    initials: 'JD',
     size: 'md',
     alt: 'John Doe',
   },

@@ -14,36 +14,34 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <Select>
-      <option value="">Choose an option...</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </Select>
-  ),
+  args: {
+    options: [
+      { value: '1', label: 'Option 1' },
+      { value: '2', label: 'Option 2' },
+      { value: '3', label: 'Option 3' },
+    ],
+    placeholder: 'Choose an option...',
+  },
 };
 
-export const WithLabel: Story = {
-  render: () => (
-    <div>
-      <label className="block text-sm font-medium mb-2">Country</label>
-      <Select>
-        <option value="">Select a country...</option>
-        <option value="uk">United Kingdom</option>
-        <option value="us">United States</option>
-        <option value="ca">Canada</option>
-        <option value="au">Australia</option>
-      </Select>
-    </div>
-  ),
+export const WithCountries: Story = {
+  args: {
+    options: [
+      { value: 'uk', label: 'United Kingdom' },
+      { value: 'us', label: 'United States' },
+      { value: 'ca', label: 'Canada' },
+      { value: 'au', label: 'Australia' },
+    ],
+    placeholder: 'Select a country...',
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Select disabled>
-      <option value="">Disabled select</option>
-      <option value="1">Option 1</option>
-    </Select>
-  ),
+  args: {
+    options: [
+      { value: '1', label: 'Option 1' },
+    ],
+    placeholder: 'Disabled select',
+    disabled: true,
+  },
 };
