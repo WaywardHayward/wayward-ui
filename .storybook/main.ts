@@ -10,6 +10,18 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  core: {
+    builder: '@storybook/builder-vite',
+  },
+  async viteFinal(config) {
+    return {
+      ...config,
+      build: {
+        ...config.build,
+        cssCodeSplit: false,
+      },
+    };
+  },
 };
 
 export default config;
