@@ -16,7 +16,7 @@ const colorClasses = {
 };
 
 /**
- * H1 heading component
+ * H1 heading component - Hero text
  */
 export function H1({
   children,
@@ -25,7 +25,7 @@ export function H1({
 }: TypographyProps) {
   return (
     <h1
-      className={`text-3xl font-bold tracking-tight ${colorClasses[color]} ${className}`}
+      className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight ${colorClasses[color]} ${className}`}
     >
       {children}
     </h1>
@@ -33,7 +33,7 @@ export function H1({
 }
 
 /**
- * H2 heading component
+ * H2 heading component - Section headings
  */
 export function H2({
   children,
@@ -42,7 +42,7 @@ export function H2({
 }: TypographyProps) {
   return (
     <h2
-      className={`text-2xl font-semibold tracking-tight ${colorClasses[color]} ${className}`}
+      className={`text-3xl md:text-4xl font-bold tracking-tight leading-tight ${colorClasses[color]} ${className}`}
     >
       {children}
     </h2>
@@ -50,7 +50,7 @@ export function H2({
 }
 
 /**
- * H3 heading component
+ * H3 heading component - Subsection headings
  */
 export function H3({
   children,
@@ -58,14 +58,14 @@ export function H3({
   className = "",
 }: TypographyProps) {
   return (
-    <h3 className={`text-xl font-semibold ${colorClasses[color]} ${className}`}>
+    <h3 className={`text-2xl md:text-3xl font-semibold tracking-tight ${colorClasses[color]} ${className}`}>
       {children}
     </h3>
   );
 }
 
 /**
- * H4 heading component
+ * H4 heading component - Card/component titles
  */
 export function H4({
   children,
@@ -73,7 +73,7 @@ export function H4({
   className = "",
 }: TypographyProps) {
   return (
-    <h4 className={`text-lg font-medium ${colorClasses[color]} ${className}`}>
+    <h4 className={`text-xl md:text-2xl font-semibold ${colorClasses[color]} ${className}`}>
       {children}
     </h4>
   );
@@ -88,7 +88,7 @@ export function Text({
   className = "",
 }: TypographyProps) {
   return (
-    <p className={`text-sm ${colorClasses[color]} ${className}`}>{children}</p>
+    <p className={`text-base leading-relaxed ${colorClasses[color]} ${className}`}>{children}</p>
   );
 }
 
@@ -101,7 +101,7 @@ export function Small({
   className = "",
 }: TypographyProps) {
   return (
-    <small className={`text-xs ${colorClasses[color]} ${className}`}>
+    <small className={`text-sm leading-normal ${colorClasses[color]} ${className}`}>
       {children}
     </small>
   );
@@ -117,7 +117,7 @@ export function Lead({
 }: TypographyProps) {
   return (
     <p
-      className={`text-lg text-muted-foreground ${colorClasses[color]} ${className}`}
+      className={`text-xl md:text-2xl leading-relaxed font-light ${colorClasses[color]} ${className}`}
     >
       {children}
     </p>
@@ -133,7 +133,7 @@ export function Muted({
 }: Omit<TypographyProps, "color">) {
   return (
     <p
-      className={`text-sm text-muted-foreground ${colorClasses.muted} ${className}`}
+      className={`text-sm leading-normal ${colorClasses.muted} ${className}`}
     >
       {children}
     </p>

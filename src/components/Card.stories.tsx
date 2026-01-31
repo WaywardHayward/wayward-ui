@@ -39,3 +39,28 @@ export const WithMultipleElements: Story = {
     ),
   },
 };
+
+export const GlassMorphism: Story = {
+  args: {
+    variant: 'glass',
+    children: (
+      <div>
+        <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">Glass Card</h3>
+        <p className="text-gray-700 dark:text-gray-300">
+          Beautiful frosted glass effect with backdrop blur.
+        </p>
+      </div>
+    ),
+  },
+  parameters: {
+    backgrounds: {
+      default: 'gradient',
+      values: [
+        {
+          name: 'gradient',
+          value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        },
+      ],
+    },
+  },
+};
