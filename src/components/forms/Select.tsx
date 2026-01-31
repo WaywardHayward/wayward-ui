@@ -6,7 +6,7 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-interface SelectProps
+export interface SelectProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size"> {
   size?: "sm" | "md" | "lg";
   variant?: "default" | "error";

@@ -1,6 +1,6 @@
 import { forwardRef, InputHTMLAttributes } from "react";
 
-interface InputProps
+export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   size?: "sm" | "md" | "lg";
   variant?: "default" | "error";
