@@ -17,7 +17,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "vite build && tsc --project tsconfig.build.json",
     "dev": "vite",
     "lint": "eslint src --ext ts,tsx",
     "prepublishOnly": "npm run build",
