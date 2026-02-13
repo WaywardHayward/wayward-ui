@@ -29,3 +29,17 @@ export { H1, H2, H3, H4, Lead, Muted, Small, Text } from './components/Typograph
 
 // Forms
 export * from './components/forms';
+
+// State components
+export { EmptyState } from './components/EmptyState';
+export type { EmptyStateProps } from './components/EmptyState';
+export { ErrorState } from './components/ErrorState';
+export type { ErrorStateProps } from './components/ErrorState';
+
+// Navigation & menus
+export { NavItem } from './components/NavItem';
+export type { NavItemProps } from './components/NavItem';
+export { OptionsMenu } from './components/OptionsMenu';
+export type { OptionsMenuProps, OptionsMenuItem } from './components/OptionsMenu';
+export { SectionHeader } from './components/SectionHeader';
+export type { SectionHeaderProps } from './components/SectionHeader';
