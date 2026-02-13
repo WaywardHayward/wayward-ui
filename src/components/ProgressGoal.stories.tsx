@@ -156,7 +156,7 @@ export const MultipleGoals: Story = {
       <ProgressGoal
         goal={{ title: 'Instrument Approaches', progress: 15, target: '6 approaches' }}
         variant="cockpit"
-        color: 'red'
+        color="red"
       />
     </div>
   ),
