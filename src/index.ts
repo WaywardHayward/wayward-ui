@@ -91,6 +91,8 @@ export type { NotificationBellProps, Notification } from './components/Notificat
 // Loader
 export { Loader, FullScreenLoader, AviationLoader, MinimalLoader, SmallLoader } from './components/Loader';
 export type { LoaderProps } from './components/Loader';
+export { LoadingScreen } from './components/LoadingScreen';
+export type { LoadingScreenProps } from './components/LoadingScreen';
 
 // Adaptive Navigation
 export { AdaptiveNavigation } from './components/AdaptiveNavigation';
@@ -104,3 +106,15 @@ export { MetricDisplay } from './components/MetricDisplay';
 export { StatBlock } from './components/StatBlock';
 export { RequestCard } from './components/RequestCard';
 export type { RequestCardProps, RequestCardAction } from './components/RequestCard';
+
+// Progress & Goals
+export { ProgressGoal } from './components/ProgressGoal';
+export type { ProgressGoalProps, ProgressGoalData } from './components/ProgressGoal';
+
+// Mobile Navigation
+export { MobileBottomNav } from './components/MobileBottomNav';
+export type { MobileBottomNavProps, MobileNavItem } from './components/MobileBottomNav';
+
+// Social/Share
+export { ShareButton, ShareActions } from './components/ShareButton';
+export type { ShareButtonProps, ShareActionsProps } from './components/ShareButton';
