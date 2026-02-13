@@ -60,6 +60,22 @@ export type { SettingCardProps } from './components/SettingCard';
 export { LoadMoreButton } from './components/LoadMoreButton';
 export type { LoadMoreButtonProps } from './components/LoadMoreButton';
 
+// Social & Engagement
+export { ActionButton } from './components/ActionButton';
+export type { ActionButtonProps } from './components/ActionButton';
+export { AchievementsPanel } from './components/AchievementsPanel';
+export type { AchievementsPanelProps, Achievement } from './components/AchievementsPanel';
+export { ActivityFeed } from './components/ActivityFeed';
+export type { ActivityFeedProps, FeedItem } from './components/ActivityFeed';
+export { EngagementSummary } from './components/EngagementSummary';
+export type { EngagementSummaryProps, ReactionUser } from './components/EngagementSummary';
+
+// Feedback
+export { CookieConsent } from './components/CookieConsent';
+export type { CookieConsentProps } from './components/CookieConsent';
+export { ErrorBanner } from './components/ErrorBanner';
+export type { ErrorBannerProps } from './components/ErrorBanner';
+
 // Autocomplete
 export { Autocomplete } from './components/Autocomplete';
 export type { AutocompleteProps, AutocompleteOption } from './components/Autocomplete';
@@ -79,3 +95,12 @@ export type { LoaderProps } from './components/Loader';
 // Adaptive Navigation
 export { AdaptiveNavigation } from './components/AdaptiveNavigation';
 export type { AdaptiveNavigationProps, NavItem as AdaptiveNavItem } from './components/AdaptiveNavigation';
+
+// Chart & Data Display
+export { ChartContainer } from './components/ChartContainer';
+export { CommonHeader } from './components/CommonHeader';
+export { Footer } from './components/Footer';
+export { MetricDisplay } from './components/MetricDisplay';
+export { StatBlock } from './components/StatBlock';
+export { RequestCard } from './components/RequestCard';
+export type { RequestCardProps, RequestCardAction } from './components/RequestCard';
