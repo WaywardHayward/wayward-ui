@@ -59,3 +59,23 @@ export { SettingCard } from './components/SettingCard';
 export type { SettingCardProps } from './components/SettingCard';
 export { LoadMoreButton } from './components/LoadMoreButton';
 export type { LoadMoreButtonProps } from './components/LoadMoreButton';
+
+// Autocomplete
+export { Autocomplete } from './components/Autocomplete';
+export type { AutocompleteProps, AutocompleteOption } from './components/Autocomplete';
+
+// Theme toggle
+export { ThemeToggle } from './components/ThemeToggle';
+export type { ThemeToggleProps, ThemePreference } from './components/ThemeToggle';
+
+// Notifications
+export { NotificationBell } from './components/NotificationBell';
+export type { NotificationBellProps, Notification } from './components/NotificationBell';
+
+// Loader
+export { Loader, FullScreenLoader, AviationLoader, MinimalLoader, SmallLoader } from './components/Loader';
+export type { LoaderProps } from './components/Loader';
+
+// Adaptive Navigation
+export { AdaptiveNavigation } from './components/AdaptiveNavigation';
+export type { AdaptiveNavigationProps, NavItem as AdaptiveNavItem } from './components/AdaptiveNavigation';
