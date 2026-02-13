@@ -43,3 +43,19 @@ export { OptionsMenu } from './components/OptionsMenu';
 export type { OptionsMenuProps, OptionsMenuItem } from './components/OptionsMenu';
 export { SectionHeader } from './components/SectionHeader';
 export type { SectionHeaderProps } from './components/SectionHeader';
+
+// Feedback & notifications
+export { Banner } from './components/Banner';
+export type { BannerProps } from './components/Banner';
+export { InfoBadge } from './components/InfoBadge';
+export type { InfoBadgeProps } from './components/InfoBadge';
+export { InfoOverlay } from './components/InfoOverlay';
+export type { InfoOverlayProps } from './components/InfoOverlay';
+
+// Cards & actions
+export { ActionCard } from './components/ActionCard';
+export type { ActionCardProps } from './components/ActionCard';
+export { SettingCard } from './components/SettingCard';
+export type { SettingCardProps } from './components/SettingCard';
+export { LoadMoreButton } from './components/LoadMoreButton';
+export type { LoadMoreButtonProps } from './components/LoadMoreButton';
