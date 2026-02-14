@@ -31,13 +31,13 @@ export function Card({
 
   const variantClasses = {
     default:
-      "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm",
+      "glass border border-white/10 shadow-surface-sm",
     outlined:
-      "bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600",
+      "glass border-2 border-white/15",
     elevated:
-      "bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700",
+      "glass shadow-surface-lg border border-white/10",
     interactive:
-      "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all cursor-pointer hover:border-blue-500/30",
+      "glass border border-white/10 shadow-surface-sm hover:shadow-surface-md transition-all cursor-pointer hover:border-white/20",
     // Enhanced glass with stronger blur and subtle border glow
     glass: [
       "bg-slate-900/60 backdrop-blur-xl",
@@ -95,13 +95,13 @@ export function Card({
     >
       {innerHighlight}
       {header && (
-        <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-700/50">
+        <div className="px-6 py-4 border-b border-white/10">
           {header}
         </div>
       )}
       <div className={`${paddingClasses[padding]} relative z-10`}>{children}</div>
       {footer && (
-        <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-700/50">
+        <div className="px-6 py-4 border-t border-white/10">
           {footer}
         </div>
       )}

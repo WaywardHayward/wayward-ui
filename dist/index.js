@@ -53,8 +53,8 @@ function Et() {
     }
     function H(r, u, m) {
       {
-        var g = O.ReactDebugCurrentFrame, k = g.getStackAddendum();
-        k !== "" && (u += "%s", m = m.concat([k]));
+        var g = O.ReactDebugCurrentFrame, w = g.getStackAddendum();
+        w !== "" && (u += "%s", m = m.concat([w]));
         var j = m.map(function(v) {
           return String(v);
         });
@@ -74,8 +74,8 @@ function Et() {
       var g = r.displayName;
       if (g)
         return g;
-      var k = u.displayName || u.name || "";
-      return k !== "" ? m + "(" + k + ")" : m;
+      var w = u.displayName || u.name || "";
+      return w !== "" ? m + "(" + w + ")" : m;
     }
     function X(r) {
       return r.displayName || "Context";
@@ -115,7 +115,7 @@ function Et() {
             var g = r.displayName || null;
             return g !== null ? g : z(r.type) || "Memo";
           case f: {
-            var k = r, j = k._payload, v = k._init;
+            var w = r, j = w._payload, v = w._init;
             try {
               return z(v(j));
             } catch {
@@ -125,14 +125,14 @@ function Et() {
         }
       return null;
     }
-    var w = Object.assign, C = 0, ve, ke, we, je, ye, Ne, $e;
+    var k = Object.assign, C = 0, ve, we, ke, je, ye, Ne, $e;
     function Ce() {
     }
     Ce.__reactDisabledLog = !0;
     function Qe() {
       {
         if (C === 0) {
-          ve = console.log, ke = console.info, we = console.warn, je = console.error, ye = console.group, Ne = console.groupCollapsed, $e = console.groupEnd;
+          ve = console.log, we = console.info, ke = console.warn, je = console.error, ye = console.group, Ne = console.groupCollapsed, $e = console.groupEnd;
           var r = {
             configurable: !0,
             enumerable: !0,
@@ -161,25 +161,25 @@ function Et() {
             writable: !0
           };
           Object.defineProperties(console, {
-            log: w({}, r, {
+            log: k({}, r, {
               value: ve
             }),
-            info: w({}, r, {
-              value: ke
-            }),
-            warn: w({}, r, {
+            info: k({}, r, {
               value: we
             }),
-            error: w({}, r, {
+            warn: k({}, r, {
+              value: ke
+            }),
+            error: k({}, r, {
               value: je
             }),
-            group: w({}, r, {
+            group: k({}, r, {
               value: ye
             }),
-            groupCollapsed: w({}, r, {
+            groupCollapsed: k({}, r, {
               value: Ne
             }),
-            groupEnd: w({}, r, {
+            groupEnd: k({}, r, {
               value: $e
             })
           });
@@ -193,8 +193,8 @@ function Et() {
         if (ie === void 0)
           try {
             throw Error();
-          } catch (k) {
-            var g = k.stack.trim().match(/\n( *(at )?)/);
+          } catch (w) {
+            var g = w.stack.trim().match(/\n( *(at )?)/);
             ie = g && g[1] || "";
           }
         return `
@@ -216,7 +216,7 @@ function Et() {
       }
       var g;
       ce = !0;
-      var k = Error.prepareStackTrace;
+      var w = Error.prepareStackTrace;
       Error.prepareStackTrace = void 0;
       var j;
       j = de.current, de.current = null, Qe();
@@ -272,7 +272,7 @@ function Et() {
             }
         }
       } finally {
-        ce = !1, de.current = j, et(), Error.prepareStackTrace = k;
+        ce = !1, de.current = j, et(), Error.prepareStackTrace = w;
       }
       var V = r ? r.displayName || r.name : "", D = V ? Z(V) : "";
       return typeof r == "function" && Q.set(r, D), D;
@@ -304,9 +304,9 @@ function Et() {
           case x:
             return ee(r.type, u, m);
           case f: {
-            var g = r, k = g._payload, j = g._init;
+            var g = r, w = g._payload, j = g._init;
             try {
-              return ee(j(k), u, m);
+              return ee(j(w), u, m);
             } catch {
             }
           }
@@ -321,7 +321,7 @@ function Et() {
       } else
         Se.setExtraStackFrame(null);
     }
-    function at(r, u, m, g, k) {
+    function at(r, u, m, g, w) {
       {
         var j = Function.call.bind(Y);
         for (var v in r)
@@ -336,7 +336,7 @@ function Et() {
             } catch (E) {
               p = E;
             }
-            p && !(p instanceof Error) && (te(k), $("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", g || "React class", m, v, typeof p), te(null)), p instanceof Error && !(p.message in Le) && (Le[p.message] = !0, te(k), $("Failed %s type: %s", m, p.message), te(null));
+            p && !(p instanceof Error) && (te(w), $("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", g || "React class", m, v, typeof p), te(null)), p instanceof Error && !(p.message in Le) && (Le[p.message] = !0, te(w), $("Failed %s type: %s", m, p.message), te(null));
           }
       }
     }
@@ -411,7 +411,7 @@ function Et() {
         });
       }
     }
-    var bt = function(r, u, m, g, k, j, v) {
+    var bt = function(r, u, m, g, w, j, v) {
       var p = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: s,
@@ -437,13 +437,13 @@ function Et() {
         configurable: !1,
         enumerable: !1,
         writable: !1,
-        value: k
+        value: w
       }), Object.freeze && (Object.freeze(p.props), Object.freeze(p)), p;
     };
-    function ht(r, u, m, g, k) {
+    function ht(r, u, m, g, w) {
       {
         var j, v = {}, p = null, _ = null;
-        m !== void 0 && (_e(m), p = "" + m), ct(u) && (_e(u.key), p = "" + u.key), it(u) && (_ = u.ref, ut(u, k));
+        m !== void 0 && (_e(m), p = "" + m), ct(u) && (_e(u.key), p = "" + u.key), it(u) && (_ = u.ref, ut(u, w));
         for (j in u)
           Y.call(u, j) && !dt.hasOwnProperty(j) && (v[j] = u[j]);
         if (r && r.defaultProps) {
@@ -455,7 +455,7 @@ function Et() {
           var S = typeof r == "function" ? r.displayName || r.name || "Unknown" : r;
           p && xt(v, S), _ && mt(v, S);
         }
-        return bt(r, p, _, k, g, Te.current, v);
+        return bt(r, p, _, w, g, Te.current, v);
       }
     }
     var xe = O.ReactCurrentOwner, Oe = O.ReactDebugCurrentFrame;
@@ -524,9 +524,9 @@ Check the top-level render call using <` + m + ">.");
         else if (be(r))
           r._store && (r._store.validated = !0);
         else if (r) {
-          var k = R(r);
-          if (typeof k == "function" && k !== r.entries)
-            for (var j = k.call(r), v; !(v = j.next()).done; )
+          var w = R(r);
+          if (typeof w == "function" && w !== r.entries)
+            for (var j = w.call(r), v; !(v = j.next()).done; )
               be(v.value) && Be(v.value, u);
         }
       }
@@ -550,8 +550,8 @@ Check the top-level render call using <` + m + ">.");
           at(m, r.props, "prop", g, r);
         } else if (u.PropTypes !== void 0 && !me) {
           me = !0;
-          var k = z(u);
-          $("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", k || "Unknown");
+          var w = z(u);
+          $("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", w || "Unknown");
         }
         typeof u.getDefaultProps == "function" && !u.getDefaultProps.isReactClassApproved && $("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
       }
@@ -569,7 +569,7 @@ Check the top-level render call using <` + m + ">.");
       }
     }
     var We = {};
-    function Ie(r, u, m, g, k, j) {
+    function Ie(r, u, m, g, w, j) {
       {
         var v = oe(r);
         if (!v) {
@@ -580,7 +580,7 @@ Check the top-level render call using <` + m + ">.");
           var E;
           r === null ? E = "null" : ue(r) ? E = "array" : r !== void 0 && r.$$typeof === s ? (E = "<" + (z(r.type) || "Unknown") + " />", p = " Did you accidentally export a JSX literal instead of a component?") : E = typeof r, $("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", E, p);
         }
-        var S = ht(r, u, m, k, j);
+        var S = ht(r, u, m, w, j);
         if (S == null)
           return S;
         if (v) {
@@ -613,13 +613,13 @@ React keys must be passed directly to JSX without using spread:
         return r === l ? vt(S) : pt(S), S;
       }
     }
-    function kt(r, u, m) {
+    function wt(r, u, m) {
       return Ie(r, u, m, !0);
     }
-    function wt(r, u, m) {
+    function kt(r, u, m) {
       return Ie(r, u, m, !1);
     }
-    var jt = wt, yt = kt;
+    var jt = kt, yt = wt;
     q.Fragment = l, q.jsx = jt, q.jsxs = yt;
   })()), q;
 }
@@ -1044,10 +1044,10 @@ function Qr({
     md: "p-6",
     lg: "p-8"
   }, b = {
-    default: "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm",
-    outlined: "bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600",
-    elevated: "bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700",
-    interactive: "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all cursor-pointer hover:border-blue-500/30",
+    default: "glass border border-white/10 shadow-surface-sm",
+    outlined: "glass border-2 border-white/15",
+    elevated: "glass shadow-surface-lg border border-white/10",
+    interactive: "glass border border-white/10 shadow-surface-sm hover:shadow-surface-md transition-all cursor-pointer hover:border-white/20",
     // Enhanced glass with stronger blur and subtle border glow
     glass: [
       "bg-slate-900/60 backdrop-blur-xl",
@@ -1098,9 +1098,9 @@ function Qr({
       onClick: n,
       children: [
         x,
-        o && /* @__PURE__ */ e.jsx("div", { className: "px-6 py-4 border-b border-slate-200 dark:border-slate-700/50", children: o }),
+        o && /* @__PURE__ */ e.jsx("div", { className: "px-6 py-4 border-b border-white/10", children: o }),
         /* @__PURE__ */ e.jsx("div", { className: `${i[a]} relative z-10`, children: t }),
-        d && /* @__PURE__ */ e.jsx("div", { className: "px-6 py-4 border-t border-slate-200 dark:border-slate-700/50", children: d })
+        d && /* @__PURE__ */ e.jsx("div", { className: "px-6 py-4 border-t border-white/10", children: d })
       ]
     }
   );
@@ -1979,7 +1979,7 @@ const vs = ({
   md: "text-xl",
   lg: "text-2xl"
 };
-function ks({
+function ws({
   title: t,
   subtitle: s,
   action: a,
@@ -2000,17 +2000,17 @@ const vr = {
   warning: "bg-gradient-to-r from-amber-500 to-orange-600 text-white border-b border-amber-400/30",
   error: "bg-gradient-to-r from-red-600 to-red-700 text-white border-b border-red-500/30",
   gradient: "bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 text-white border-b border-purple-400/30"
-}, kr = {
+}, wr = {
   info: "shadow-glow-blue",
   success: "shadow-lg shadow-emerald-500/20",
   warning: "shadow-glow-amber",
   error: "shadow-lg shadow-red-500/20",
   gradient: "shadow-lg shadow-purple-500/30"
-}, wr = {
+}, kr = {
   top: "fixed top-0 left-0 right-0",
   bottom: "fixed bottom-0 left-0 right-0",
   inline: "relative"
-}, ws = ({
+}, ks = ({
   variant: t = "info",
   icon: s,
   message: a,
@@ -2023,9 +2023,9 @@ const vr = {
   "div",
   {
     className: `
-        ${wr[d]} 
+        ${kr[d]} 
         ${vr[t]} 
-        ${c ? kr[t] : ""} 
+        ${c ? wr[t] : ""} 
         px-4 py-3 z-50 backdrop-blur-sm
         ${n}
       `.trim().replace(/\s+/g, " "),
@@ -2701,45 +2701,45 @@ const Ts = ({
   Xe(() => () => {
     B.current && clearTimeout(B.current);
   }, []);
-  const G = async (w) => {
-    if (w.length < i) {
+  const G = async (k) => {
+    if (k.length < i) {
       R([]), $(!1);
       return;
     }
     try {
       $(!0);
-      const C = await l(w);
+      const C = await l(k);
       R(C);
     } catch (C) {
       console.error("Search error:", C), R([]);
     } finally {
       $(!1);
     }
-  }, J = (w) => {
+  }, J = (k) => {
     B.current && clearTimeout(B.current), B.current = setTimeout(() => {
-      G(w);
+      G(k);
     }, b);
-  }, oe = (w) => {
-    const C = w.target.value;
+  }, oe = (k) => {
+    const C = k.target.value;
     L(C), A(-1), C.length >= i ? ($(!0), J(C)) : (R([]), $(!1));
-  }, K = (w) => {
-    o(w), L(""), f(!1), R([]), A(-1);
+  }, K = (k) => {
+    o(k), L(""), f(!1), R([]), A(-1);
   }, X = () => {
     L(""), f(!1), R([]), A(-1), d && d();
-  }, z = (w) => {
+  }, z = (k) => {
     if (!x || y.length === 0) {
-      (w.key === "ArrowDown" || w.key === "Enter") && (f(!0), N.length >= i && G(N));
+      (k.key === "ArrowDown" || k.key === "Enter") && (f(!0), N.length >= i && G(N));
       return;
     }
-    switch (w.key) {
+    switch (k.key) {
       case "ArrowDown":
-        w.preventDefault(), A((C) => C < y.length - 1 ? C + 1 : 0);
+        k.preventDefault(), A((C) => C < y.length - 1 ? C + 1 : 0);
         break;
       case "ArrowUp":
-        w.preventDefault(), A((C) => C > 0 ? C - 1 : y.length - 1);
+        k.preventDefault(), A((C) => C > 0 ? C - 1 : y.length - 1);
         break;
       case "Enter":
-        w.preventDefault(), H >= 0 && K(y[H]);
+        k.preventDefault(), H >= 0 && K(y[H]);
         break;
       case "Escape":
         f(!1), A(-1);
@@ -2805,17 +2805,17 @@ const Ts = ({
         {
           ref: ne,
           className: "absolute z-50 w-full mt-1 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg max-h-60 overflow-auto",
-          children: y.map((w, C) => /* @__PURE__ */ e.jsxs(
+          children: y.map((k, C) => /* @__PURE__ */ e.jsxs(
             "li",
             {
-              onClick: () => K(w),
+              onClick: () => K(k),
               className: `px-3 py-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/20 ${C === H ? "bg-blue-100 dark:bg-blue-900/40" : ""}`,
               children: [
-                /* @__PURE__ */ e.jsx("div", { className: "font-medium text-gray-900 dark:text-gray-100", children: w.label }),
-                w.subtitle && /* @__PURE__ */ e.jsx("div", { className: "text-sm text-gray-500 dark:text-gray-400", children: w.subtitle })
+                /* @__PURE__ */ e.jsx("div", { className: "font-medium text-gray-900 dark:text-gray-100", children: k.label }),
+                k.subtitle && /* @__PURE__ */ e.jsx("div", { className: "text-sm text-gray-500 dark:text-gray-400", children: k.subtitle })
               ]
             },
-            w.id
+            k.id
           ))
         }
       ),
@@ -3974,7 +3974,7 @@ export {
   Xr as AvatarStack,
   Os as AviationLoader,
   Zr as Badge,
-  ws as Banner,
+  ks as Banner,
   Ut as Button,
   Qr as Card,
   Ws as ChartContainer,
@@ -4017,7 +4017,7 @@ export {
   Us as ProgressGoal,
   Ys as RequestCard,
   Jr as Section,
-  ks as SectionHeader,
+  ws as SectionHeader,
   cr as Select,
   Ns as SettingCard,
   Gs as ShareActions,
