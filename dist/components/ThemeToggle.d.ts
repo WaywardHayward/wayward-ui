@@ -1,4 +1,4 @@
-export type ThemePreference = 'light' | 'dark' | 'system';
+import { ThemePreference } from '../types/ThemePreference';
 export interface ThemeToggleProps {
     /** Current theme preference */
     themePreference: ThemePreference;

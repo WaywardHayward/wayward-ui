@@ -1,10 +1,5 @@
 import React from "react";
-
-export interface OptionsMenuItem {
-  label: string;
-  onClick: () => void;
-  variant?: "default" | "danger";
-}
+import { OptionsMenuItem } from '../types/OptionsMenuItem';
 
 export interface OptionsMenuProps {
   items: OptionsMenuItem[];

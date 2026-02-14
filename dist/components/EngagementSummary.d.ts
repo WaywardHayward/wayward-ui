@@ -1,7 +1,4 @@
-export interface ReactionUser {
-    name: string;
-    avatar?: string;
-}
+import { ReactionUser } from '../types/ReactionUser';
 export interface EngagementSummaryProps {
     /** Total number of reactions/kudos */
     totalReactions: number;

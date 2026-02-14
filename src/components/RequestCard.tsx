@@ -1,9 +1,4 @@
-export interface RequestCardAction {
-  label: string;
-  onClick: () => void;
-  variant: "approve" | "reject" | "cancel";
-  disabled?: boolean;
-}
+import { RequestCardAction } from '../types/RequestCardAction';
 
 export interface RequestCardProps {
   /** Unique identifier */

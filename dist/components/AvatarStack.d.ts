@@ -1,9 +1,5 @@
 import React from "react";
-export interface AvatarStackUser {
-    id: string;
-    name: string;
-    avatar?: string;
-}
+import { AvatarStackUser } from '../types/AvatarStackUser';
 export interface AvatarStackProps {
     users: AvatarStackUser[];
     maxVisible?: number;

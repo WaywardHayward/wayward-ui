@@ -1,8 +1,5 @@
 import React from 'react';
-export interface FeedItem {
-    id: string;
-    content: React.ReactNode;
-}
+import { FeedItem } from '../types/FeedItem';
 export interface ActivityFeedProps {
     /** Feed items to display */
     items?: FeedItem[];

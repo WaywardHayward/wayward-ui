@@ -1,4 +1,7 @@
-export { FormField, FormSection } from "./FormField";
+export { FormField } from "./FormField";
+export type { FormFieldProps } from "./FormField";
+export { FormSection } from "./FormSection";
+export type { FormSectionProps } from "./FormSection";
 export { Checkbox } from "./Checkbox";
 export { DatePicker, DateTimePicker } from "./DatePicker";
 export { Input } from "./Input";

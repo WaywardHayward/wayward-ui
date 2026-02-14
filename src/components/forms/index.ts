@@ -1,5 +1,8 @@
 // Form layout components
-export { FormField, FormSection } from "./FormField";
+export { FormField } from "./FormField";
+export type { FormFieldProps } from "./FormField";
+export { FormSection } from "./FormSection";
+export type { FormSectionProps } from "./FormSection";
 
 // Form input components
 export { Checkbox } from "./Checkbox";

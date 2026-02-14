@@ -1,10 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
-
-export interface FeedItem {
-  id: string;
-  content: React.ReactNode;
-}
+import { FeedItem } from '../types/FeedItem';
 
 export interface ActivityFeedProps {
   /** Feed items to display */

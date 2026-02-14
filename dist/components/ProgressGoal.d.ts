@@ -1,8 +1,4 @@
-export interface ProgressGoalData {
-    title: string;
-    progress: number;
-    target: string;
-}
+import { ProgressGoalData } from '../types/ProgressGoalData';
 export interface ProgressGoalProps {
     goal: ProgressGoalData;
     /** Visual variant */

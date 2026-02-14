@@ -9,7 +9,8 @@ export { Section } from './components/layouts/Section';
 // UI components
 export { Avatar } from './components/Avatar';
 export { AvatarStack } from './components/AvatarStack';
-export type { AvatarStackProps, AvatarStackUser } from './components/AvatarStack';
+export type { AvatarStackProps } from './components/AvatarStack';
+export type { AvatarStackUser } from './types/AvatarStackUser';
 export { Badge } from './components/Badge';
 export { Button } from './components/Button';
 export { Card } from './components/Card';
@@ -18,14 +19,18 @@ export type { IconButtonProps } from './components/IconButton';
 export { Skeleton } from './components/Skeleton';
 export type { SkeletonProps } from './components/Skeleton';
 export { StatCard } from './components/StatCard';
-export { Loading, Spinner } from './components/Spinner';
+export { Spinner } from './components/Spinner';
+export { Loading } from './components/Loading';
+export type { LoadingProps } from './components/Loading';
 export { TabNavigation } from './components/TabNavigation';
-export type { Tab, TabNavigationProps } from './components/TabNavigation';
+export type { TabNavigationProps } from './components/TabNavigation';
+export type { Tab } from './types/Tab';
 export { Toggle } from './components/Toggle';
 export type { ToggleProps } from './components/Toggle';
 
 // Typography
 export { H1, H2, H3, H4, Lead, Muted, Small, Text } from './components/Typography';
+export type { TypographyProps } from './components/Typography';
 
 // Forms
 export * from './components/forms';
@@ -35,12 +40,14 @@ export { EmptyState } from './components/EmptyState';
 export type { EmptyStateProps } from './components/EmptyState';
 export { ErrorState } from './components/ErrorState';
 export type { ErrorStateProps } from './components/ErrorState';
+export { DefaultErrorIcon } from './components/DefaultErrorIcon';
 
 // Navigation & menus
 export { NavItem } from './components/NavItem';
 export type { NavItemProps } from './components/NavItem';
 export { OptionsMenu } from './components/OptionsMenu';
-export type { OptionsMenuProps, OptionsMenuItem } from './components/OptionsMenu';
+export type { OptionsMenuProps } from './components/OptionsMenu';
+export type { OptionsMenuItem } from './types/OptionsMenuItem';
 export { SectionHeader } from './components/SectionHeader';
 export type { SectionHeaderProps } from './components/SectionHeader';
 
@@ -64,11 +71,14 @@ export type { LoadMoreButtonProps } from './components/LoadMoreButton';
 export { ActionButton } from './components/ActionButton';
 export type { ActionButtonProps } from './components/ActionButton';
 export { AchievementsPanel } from './components/AchievementsPanel';
-export type { AchievementsPanelProps, Achievement } from './components/AchievementsPanel';
+export type { AchievementsPanelProps } from './components/AchievementsPanel';
+export type { Achievement } from './types/Achievement';
 export { ActivityFeed } from './components/ActivityFeed';
-export type { ActivityFeedProps, FeedItem } from './components/ActivityFeed';
+export type { ActivityFeedProps } from './components/ActivityFeed';
+export type { FeedItem } from './types/FeedItem';
 export { EngagementSummary } from './components/EngagementSummary';
-export type { EngagementSummaryProps, ReactionUser } from './components/EngagementSummary';
+export type { EngagementSummaryProps } from './components/EngagementSummary';
+export type { ReactionUser } from './types/ReactionUser';
 
 // Feedback
 export { CookieConsent } from './components/CookieConsent';
@@ -82,7 +92,8 @@ export type { AutocompleteProps, AutocompleteOption } from './components/Autocom
 
 // Theme toggle
 export { ThemeToggle } from './components/ThemeToggle';
-export type { ThemeToggleProps, ThemePreference } from './components/ThemeToggle';
+export type { ThemeToggleProps } from './components/ThemeToggle';
+export type { ThemePreference } from './types/ThemePreference';
 
 // Notifications
 export { NotificationBell } from './components/NotificationBell';
@@ -96,7 +107,8 @@ export type { LoadingScreenProps } from './components/LoadingScreen';
 
 // Adaptive Navigation
 export { AdaptiveNavigation } from './components/AdaptiveNavigation';
-export type { AdaptiveNavigationProps, NavItem as AdaptiveNavItem } from './components/AdaptiveNavigation';
+export type { AdaptiveNavigationProps } from './components/AdaptiveNavigation';
+export type { NavItem as AdaptiveNavItem } from './types/NavItem';
 
 // Chart & Data Display
 export { ChartContainer } from './components/ChartContainer';
@@ -105,19 +117,24 @@ export { Footer } from './components/Footer';
 export { MetricDisplay } from './components/MetricDisplay';
 export { StatBlock } from './components/StatBlock';
 export { RequestCard } from './components/RequestCard';
-export type { RequestCardProps, RequestCardAction } from './components/RequestCard';
+export type { RequestCardProps } from './components/RequestCard';
+export type { RequestCardAction } from './types/RequestCardAction';
 
 // Progress & Goals
 export { ProgressGoal } from './components/ProgressGoal';
-export type { ProgressGoalProps, ProgressGoalData } from './components/ProgressGoal';
+export type { ProgressGoalProps } from './components/ProgressGoal';
+export type { ProgressGoalData } from './types/ProgressGoalData';
 
 // Mobile Navigation
 export { MobileBottomNav } from './components/MobileBottomNav';
-export type { MobileBottomNavProps, MobileNavItem } from './components/MobileBottomNav';
+export type { MobileBottomNavProps } from './components/MobileBottomNav';
+export type { MobileNavItem } from './types/MobileNavItem';
 
 // Social/Share
-export { ShareButton, ShareActions } from './components/ShareButton';
-export type { ShareButtonProps, ShareActionsProps } from './components/ShareButton';
+export { ShareButton } from './components/ShareButton';
+export type { ShareButtonProps } from './components/ShareButton';
+export { ShareActions } from './components/ShareActions';
+export type { ShareActionsProps } from './components/ShareActions';
 
 // Table
 export {

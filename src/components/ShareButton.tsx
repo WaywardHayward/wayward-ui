@@ -31,6 +31,29 @@ const buttonSizeClasses = {
   lg: 'py-2.5 px-4 text-base gap-2',
 };
 
+const variantClasses = {
+  default: `
+    text-slate-600 dark:text-slate-400 
+    hover:text-slate-800 dark:hover:text-slate-200 
+    hover:bg-slate-100 dark:hover:bg-slate-700
+  `,
+  glass: `
+    text-slate-700 dark:text-slate-200
+    hover:bg-white/20 dark:hover:bg-slate-700/50
+    backdrop-blur-sm
+  `,
+  cockpit: `
+    text-cyan-400 
+    hover:text-cyan-300 
+    hover:bg-cyan-500/10
+    border border-transparent hover:border-cyan-500/30
+  `,
+  minimal: `
+    text-slate-500 dark:text-slate-400
+    hover:text-blue-600 dark:hover:text-blue-400
+  `,
+};
+
 /**
  * ShareButton - A versatile share action button
  * 
@@ -47,29 +70,6 @@ export function ShareButton({
   className = '',
   disabled = false,
 }: ShareButtonProps) {
-  const variantClasses = {
-    default: `
-      text-slate-600 dark:text-slate-400 
-      hover:text-slate-800 dark:hover:text-slate-200 
-      hover:bg-slate-100 dark:hover:bg-slate-700
-    `,
-    glass: `
-      text-slate-700 dark:text-slate-200
-      hover:bg-white/20 dark:hover:bg-slate-700/50
-      backdrop-blur-sm
-    `,
-    cockpit: `
-      text-cyan-400 
-      hover:text-cyan-300 
-      hover:bg-cyan-500/10
-      border border-transparent hover:border-cyan-500/30
-    `,
-    minimal: `
-      text-slate-500 dark:text-slate-400
-      hover:text-blue-600 dark:hover:text-blue-400
-    `,
-  };
-
   const defaultIcon = (
     <svg
       className={sizeClasses[size]}
@@ -103,70 +103,4 @@ export function ShareButton({
       {showLabel && <span>{label}</span>}
     </button>
   );
-}
-
-export interface ShareActionsProps {
-  /** URL to share */
-  url?: string;
-  /** Title for share */
-  title?: string;
-  /** Text/description for share */
-  text?: string;
-  /** Callback on successful share */
-  onSuccess?: () => void;
-  /** Callback on share error or fallback */
-  onFallback?: () => void;
-  /** ShareButton props */
-  buttonProps?: Omit<ShareButtonProps, 'onShare'>;
-}
-
-/**
- * ShareActions - ShareButton with Web Share API integration
- * 
- * Automatically uses the Web Share API when available,
- * falls back to clipboard copy or custom handler.
- */
-export function ShareActions({
-  url = typeof window !== 'undefined' ? window.location.href : '',
-  title = '',
-  text = '',
-  onSuccess,
-  onFallback,
-  buttonProps = {},
-}: ShareActionsProps) {
-  const handleShare = async () => {
-    // Try Web Share API first
-    if (typeof navigator !== 'undefined' && navigator.share) {
-      try {
-        await navigator.share({
-          title,
-          text,
-          url,
-        });
-        onSuccess?.();
-        return;
-      } catch (err) {
-        // User cancelled or error
-        if ((err as Error).name !== 'AbortError') {
-          console.error('Share failed:', err);
-        }
-      }
-    }
-
-    // Fallback: copy to clipboard
-    if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(url);
-        onFallback?.();
-        return;
-      } catch (err) {
-        console.error('Clipboard copy failed:', err);
-      }
-    }
-
-    // Last resort fallback
-    onFallback?.();
-  };
-
-  return <ShareButton {...buttonProps} onShare={handleShare} />;
 }
