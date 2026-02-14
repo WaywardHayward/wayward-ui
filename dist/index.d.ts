@@ -80,3 +80,5 @@ export { MobileBottomNav } from './components/MobileBottomNav';
 export type { MobileBottomNavProps, MobileNavItem } from './components/MobileBottomNav';
 export { ShareButton, ShareActions } from './components/ShareButton';
 export type { ShareButtonProps, ShareActionsProps } from './components/ShareButton';
+export { Table, TableHeader, TableBody, TableRow, TableCell, TableHeaderCell, } from './components/Table';
+export type { TableProps, TableHeaderProps, TableBodyProps, TableRowProps, TableCellProps, TableHeaderCellProps, } from './components/Table';

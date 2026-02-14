@@ -118,3 +118,21 @@ export type { MobileBottomNavProps, MobileNavItem } from './components/MobileBot
 // Social/Share
 export { ShareButton, ShareActions } from './components/ShareButton';
 export type { ShareButtonProps, ShareActionsProps } from './components/ShareButton';
+
+// Table
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHeaderCell,
+} from './components/Table';
+export type {
+  TableProps,
+  TableHeaderProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+  TableHeaderCellProps,
+} from './components/Table';
