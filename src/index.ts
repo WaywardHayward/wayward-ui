@@ -1,5 +1,26 @@
 import './index.css';
 
+// ============================================
+// Utility Functions
+// ============================================
+export { cn } from './lib/utils';
+
+// ============================================
+// HeroUI Components (Polished, Accessible)
+// ============================================
+export * from './components/hero';
+export { HeroUIProvider } from './components/providers/HeroUIProvider';
+export type { HeroUIProviderProps } from './components/providers/HeroUIProvider';
+
+// ============================================
+// Aceternity UI Components (Animated, Wow-factor)
+// ============================================
+export * from './components/aceternity';
+
+// ============================================
+// WaywardUI Original Components
+// ============================================
+
 // Layout components
 export { Container } from './components/layouts/Container';
 export { Flex } from './components/layouts/Flex';

@@ -1,4 +1,9 @@
 import './index.css';
+export { cn } from './lib/utils';
+export * from './components/hero';
+export { HeroUIProvider } from './components/providers/HeroUIProvider';
+export type { HeroUIProviderProps } from './components/providers/HeroUIProvider';
+export * from './components/aceternity';
 export { Container } from './components/layouts/Container';
 export { Flex } from './components/layouts/Flex';
 export { Grid } from './components/layouts/Grid';
