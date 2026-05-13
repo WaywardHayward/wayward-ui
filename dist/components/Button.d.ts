@@ -15,8 +15,10 @@ interface ButtonProps {
     gradient?: boolean;
 }
 /**
- * Unified Button component with aviation cockpit styling
- * Includes gradient and glow variants for premium CTAs
+ * Unified Button component.
+ * - Track D consumers: primary/secondary/ghost/glow use accent-warm / surface-tile tokens.
+ * - Legacy consumers (no CSS vars defined): same components render with blue-600/slate-800 fallbacks.
+ * Other variants (danger/success/glow-amber) are unchanged for backward compatibility.
  */
 export declare function Button({ children, variant, size, type, onClick, disabled, loading, icon, iconPosition, fullWidth, className, gradient, }: ButtonProps): import("react/jsx-runtime").JSX.Element;
 export {};

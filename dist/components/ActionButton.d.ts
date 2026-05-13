@@ -10,8 +10,8 @@ export interface ActionButtonProps {
     active?: boolean;
     /** Click handler */
     onClick: () => void;
-    /** Active color variant */
-    activeColor?: 'red' | 'blue' | 'green' | 'yellow' | 'purple';
+    /** Active color variant. 'warm' uses the Track D accent token; named colors keep legacy behaviour. */
+    activeColor?: 'red' | 'blue' | 'green' | 'yellow' | 'purple' | 'warm';
     /** Additional class names */
     className?: string;
 }

@@ -7,8 +7,9 @@ interface BadgeProps {
     className?: string;
 }
 /**
- * Badge component for status indicators and achievements
- * Used for flight badges, achievement indicators, status labels
+ * Badge component for status indicators and achievements.
+ * - default + info use Track D tokens (with sensible fallbacks).
+ * - success/warning/danger keep their semantic palettes (meaning, not decoration).
  */
 export declare function Badge({ children, variant, size, icon, className, }: BadgeProps): import("react/jsx-runtime").JSX.Element;
 export {};

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, CSSProperties } from "react";
 
 interface CardProps {
   children: ReactNode;
@@ -12,6 +12,97 @@ interface CardProps {
   glow?: "blue" | "amber" | "none";
 }
 
+/**
+ * Track D tokens with legacy fallbacks. Consumers without the CSS vars
+ * get the original slate-900/60 glass look via var() defaults.
+ */
+const TOKEN_SURFACE_TILE = "var(--surface-tile, rgba(15,23,42,0.6))"; // slate-900/60 fallback
+const TOKEN_GLASS_BG = "var(--glass-bg, rgba(15,23,42,0.6))";
+const TOKEN_GLASS_BORDER = "var(--glass-border, rgba(255,255,255,0.10))";
+const TOKEN_GLASS_BORDER_STRONG = "var(--glass-border-strong, rgba(255,255,255,0.15))";
+
+const paddingClasses = {
+  none: "",
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8",
+};
+
+const glowClasses = {
+  none: "",
+  blue: "border-blue-500/20 shadow-glow-blue-sm hover:shadow-glow-blue",
+  amber: "border-amber-500/20 shadow-glow-amber-sm hover:shadow-glow-amber",
+};
+
+type CardVariant = NonNullable<CardProps["variant"]>;
+
+const variantClasses: Record<CardVariant, string> = {
+  default: "border shadow-surface-sm",
+  outlined: "border-2",
+  elevated: "shadow-surface-lg border",
+  interactive: "border shadow-surface-sm hover:shadow-surface-md transition-all cursor-pointer",
+  glass: [
+    "backdrop-blur-xl",
+    "border",
+    "shadow-lg shadow-black/20",
+    "transition-all duration-300",
+  ].join(" "),
+  gradient: [
+    "backdrop-blur-xl",
+    "border",
+    "shadow-surface-md",
+    "hover:shadow-surface-lg",
+    "transition-all duration-300",
+  ].join(" "),
+  cockpit: [
+    "backdrop-blur-2xl",
+    "border",
+    "shadow-surface-lg",
+    "relative",
+  ].join(" "),
+};
+
+function getVariantStyle(variant: CardVariant): CSSProperties {
+  switch (variant) {
+    case "default":
+    case "outlined":
+    case "elevated":
+    case "interactive":
+      return {
+        backgroundColor: TOKEN_GLASS_BG,
+        borderColor: TOKEN_GLASS_BORDER,
+      };
+    case "glass":
+      return {
+        backgroundColor: TOKEN_SURFACE_TILE,
+        borderColor: TOKEN_GLASS_BORDER,
+      };
+    case "gradient":
+      return {
+        backgroundImage: `linear-gradient(to bottom, ${TOKEN_SURFACE_TILE}, ${TOKEN_GLASS_BG})`,
+        borderColor: TOKEN_GLASS_BORDER_STRONG,
+      };
+    case "cockpit":
+      return {
+        backgroundImage: `linear-gradient(to bottom, ${TOKEN_SURFACE_TILE}, ${TOKEN_GLASS_BG})`,
+        borderColor: TOKEN_GLASS_BORDER_STRONG,
+      };
+    default:
+      return {};
+  }
+}
+
+function CockpitInnerHighlight() {
+  return (
+    <div
+      className="absolute inset-0 rounded-xl pointer-events-none"
+      style={{
+        boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2)",
+      }}
+    />
+  );
+}
+
 export function Card({
   children,
   className = "",
@@ -22,86 +113,29 @@ export function Card({
   onClick,
   glow = "none",
 }: CardProps) {
-  const paddingClasses = {
-    none: "",
-    sm: "p-4",
-    md: "p-6",
-    lg: "p-8",
-  };
-
-  const variantClasses = {
-    default:
-      "glass border border-white/10 shadow-surface-sm",
-    outlined:
-      "glass border-2 border-white/15",
-    elevated:
-      "glass shadow-surface-lg border border-white/10",
-    interactive:
-      "glass border border-white/10 shadow-surface-sm hover:shadow-surface-md transition-all cursor-pointer hover:border-white/20",
-    // Enhanced glass with stronger blur and subtle border glow
-    glass: [
-      "bg-slate-900/60 backdrop-blur-xl",
-      "border border-white/10",
-      "shadow-lg shadow-black/20",
-      "hover:bg-slate-900/70 hover:border-white/15",
-      "transition-all duration-300",
-    ].join(" "),
-    // New gradient variant with premium depth
-    gradient: [
-      "bg-gradient-to-b from-slate-800/80 to-slate-900/95",
-      "backdrop-blur-xl",
-      "border border-slate-700/50",
-      "shadow-surface-md",
-      "hover:shadow-surface-lg hover:border-slate-600/50",
-      "transition-all duration-300",
-    ].join(" "),
-    // Cockpit panel style - instrument-like appearance
-    cockpit: [
-      "bg-gradient-to-b from-slate-800/90 to-slate-900/95",
-      "backdrop-blur-2xl",
-      "border border-slate-700/60",
-      "shadow-surface-lg",
-      "relative",
-    ].join(" "),
-  };
-
-  const glowClasses = {
-    none: "",
-    blue: "border-blue-500/20 shadow-glow-blue-sm hover:shadow-glow-blue",
-    amber: "border-amber-500/20 shadow-glow-amber-sm hover:shadow-glow-amber",
-  };
-
-  // Inner highlight for cockpit variant
-  const innerHighlight = variant === "cockpit" ? (
-    <div 
-      className="absolute inset-0 rounded-xl pointer-events-none"
-      style={{
-        boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2)"
-      }}
-    />
-  ) : null;
-
   const Component = onClick ? "button" : "div";
+  const variantStyle = getVariantStyle(variant);
 
   return (
     <Component
+      style={variantStyle}
       className={`
         rounded-xl relative
-        ${variantClasses[variant]} 
+        ${variantClasses[variant]}
         ${glow !== "none" ? glowClasses[glow] : ""}
         ${className}
       `.trim().replace(/\s+/g, ' ')}
       onClick={onClick}
     >
-      {innerHighlight}
+      {variant === "cockpit" && <CockpitInnerHighlight />}
       {header && (
-        <div className="px-6 py-4 border-b border-white/10">
+        <div className="px-6 py-4 border-b" style={{ borderColor: TOKEN_GLASS_BORDER }}>
           {header}
         </div>
       )}
       <div className={`${paddingClasses[padding]} relative z-10`}>{children}</div>
       {footer && (
-        <div className="px-6 py-4 border-t border-white/10">
+        <div className="px-6 py-4 border-t" style={{ borderColor: TOKEN_GLASS_BORDER }}>
           {footer}
         </div>
       )}
