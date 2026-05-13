@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 export interface ShareButtonProps {
   /** Callback when share is triggered */
@@ -19,6 +19,10 @@ export interface ShareButtonProps {
   disabled?: boolean;
 }
 
+const TOKEN_TEXT_SECONDARY = "var(--text-secondary, rgba(226,232,240,0.9))";
+const TOKEN_TEXT_META = "var(--text-meta, rgba(148,163,184,1))";
+const TOKEN_ACCENT_WARM = "var(--accent-warm, #2563eb)";
+
 const sizeClasses = {
   sm: 'w-4 h-4',
   md: 'w-5 h-5',
@@ -31,48 +35,33 @@ const buttonSizeClasses = {
   lg: 'py-2.5 px-4 text-base gap-2',
 };
 
-const variantClasses = {
-  default: `
-    text-slate-600 dark:text-slate-400 
-    hover:text-slate-800 dark:hover:text-slate-200 
-    hover:bg-slate-100 dark:hover:bg-slate-700
-  `,
-  glass: `
-    text-slate-700 dark:text-slate-200
-    hover:bg-white/20 dark:hover:bg-slate-700/50
-    backdrop-blur-sm
-  `,
-  cockpit: `
-    text-cyan-400 
-    hover:text-cyan-300 
-    hover:bg-cyan-500/10
-    border border-transparent hover:border-cyan-500/30
-  `,
-  minimal: `
-    text-slate-500 dark:text-slate-400
-    hover:text-blue-600 dark:hover:text-blue-400
-  `,
+type ShareVariant = NonNullable<ShareButtonProps['variant']>;
+
+const variantClasses: Record<ShareVariant, string> = {
+  default: 'hover:bg-white/5',
+  glass: 'backdrop-blur-sm hover:bg-white/10',
+  cockpit: 'border border-transparent hover:border-white/20 hover:bg-white/5',
+  minimal: '',
 };
 
-/**
- * ShareButton - A versatile share action button
- * 
- * Can be used as icon-only or with label.
- * Supports multiple visual styles including cockpit theme.
- */
-export function ShareButton({ 
-  onShare, 
-  variant = 'default',
-  size = 'md',
-  showLabel = true,
-  label = 'Share',
-  icon,
-  className = '',
-  disabled = false,
-}: ShareButtonProps) {
-  const defaultIcon = (
+function getVariantStyle(variant: ShareVariant): CSSProperties {
+  switch (variant) {
+    case 'default':
+    case 'glass':
+      return { color: TOKEN_TEXT_SECONDARY };
+    case 'cockpit':
+      return { color: TOKEN_ACCENT_WARM };
+    case 'minimal':
+      return { color: TOKEN_TEXT_META };
+    default:
+      return {};
+  }
+}
+
+function DefaultIcon({ className }: { className: string }) {
+  return (
     <svg
-      className={sizeClasses[size]}
+      className={className}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -85,11 +74,29 @@ export function ShareButton({
       />
     </svg>
   );
+}
 
+/**
+ * ShareButton - A versatile share action button
+ *
+ * Can be used as icon-only or with label.
+ * Supports Track D theme tokens with backwards-compatible fallbacks.
+ */
+export function ShareButton({
+  onShare,
+  variant = 'default',
+  size = 'md',
+  showLabel = true,
+  label = 'Share',
+  icon,
+  className = '',
+  disabled = false,
+}: ShareButtonProps) {
   return (
     <button
       onClick={onShare}
       disabled={disabled}
+      style={getVariantStyle(variant)}
       className={`
         inline-flex items-center justify-center
         rounded-lg transition-all
@@ -99,7 +106,7 @@ export function ShareButton({
         ${className}
       `.replace(/\s+/g, ' ').trim()}
     >
-      {icon || defaultIcon}
+      {icon || <DefaultIcon className={sizeClasses[size]} />}
       {showLabel && <span>{label}</span>}
     </button>
   );

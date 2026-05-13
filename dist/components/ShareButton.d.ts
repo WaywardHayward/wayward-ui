@@ -21,6 +21,6 @@ export interface ShareButtonProps {
  * ShareButton - A versatile share action button
  *
  * Can be used as icon-only or with label.
- * Supports multiple visual styles including cockpit theme.
+ * Supports Track D theme tokens with backwards-compatible fallbacks.
  */
 export declare function ShareButton({ onShare, variant, size, showLabel, label, icon, className, disabled, }: ShareButtonProps): import("react/jsx-runtime").JSX.Element;

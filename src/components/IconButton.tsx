@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, CSSProperties } from "react";
 
 export interface IconButtonProps {
   icon: ReactNode;
@@ -10,16 +10,22 @@ export interface IconButtonProps {
   disabled?: boolean;
 }
 
+const TOKEN_ACCENT_WARM = "var(--accent-warm, #2563eb)";
+const TOKEN_TEXT_META = "var(--text-meta, rgba(148,163,184,1))"; // slate-400 fallback
+
 const sizeClasses = {
   sm: "p-1.5 [&>svg]:w-4 [&>svg]:h-4",
   md: "p-2 [&>svg]:w-5 [&>svg]:h-5",
   lg: "p-3 [&>svg]:w-6 [&>svg]:h-6",
 };
 
-const variantClasses = {
-  default: "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300",
-  active: "text-blue-600 dark:text-blue-400",
-};
+type IconButtonVariant = NonNullable<IconButtonProps["variant"]>;
+
+function getVariantStyle(variant: IconButtonVariant): CSSProperties {
+  return variant === "active"
+    ? { color: TOKEN_ACCENT_WARM }
+    : { color: TOKEN_TEXT_META };
+}
 
 export function IconButton({
   icon,
@@ -35,7 +41,8 @@ export function IconButton({
       onClick={onClick}
       disabled={disabled}
       aria-label={label}
-      className={`transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+      style={getVariantStyle(variant)}
+      className={`transition-colors rounded-lg hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed ${sizeClasses[size]} ${className}`}
     >
       {icon}
     </button>

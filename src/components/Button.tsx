@@ -16,24 +16,33 @@ interface ButtonProps {
   gradient?: boolean;
 }
 
-const variantClasses = {
+/**
+ * Track D theme tokens with legacy fallbacks.
+ * Consumers that define the CSS vars (--accent-warm, --surface-tile,
+ * --glass-border, --text-primary) get the Track D palette. Consumers
+ * that don't get the original blue/slate look via the var() fallback.
+ */
+const TOKEN_ACCENT_WARM = "var(--accent-warm, #2563eb)"; // primary CTA fill
+const TOKEN_ACCENT_WARM_HOVER = "var(--accent-warm-hover, #3b82f6)";
+const TOKEN_SURFACE_TILE = "var(--surface-tile, #1e293b)"; // secondary fill (slate-800)
+const TOKEN_GLASS_BORDER = "var(--glass-border, rgba(255,255,255,0.1))";
+const TOKEN_TEXT_SECONDARY = "var(--text-secondary, rgba(226,232,240,0.9))"; // slate-200ish
+
+const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary: [
-    "bg-blue-600 hover:bg-blue-500 active:bg-blue-700",
     "text-white font-medium",
-    "shadow-md shadow-blue-900/20",
-    "hover:shadow-lg hover:shadow-blue-900/30",
-    "disabled:bg-slate-600 disabled:text-slate-400 disabled:shadow-none",
+    "shadow-md shadow-black/20",
+    "hover:shadow-lg hover:shadow-black/30",
+    "disabled:opacity-60 disabled:shadow-none",
   ].join(" "),
   secondary: [
-    "bg-slate-800 hover:bg-slate-700 active:bg-slate-800",
-    "border border-slate-600 hover:border-slate-500",
-    "text-slate-200",
-    "disabled:bg-slate-800 disabled:text-slate-500 disabled:border-slate-700",
+    "font-medium",
+    "border",
+    "disabled:opacity-60",
   ].join(" "),
   ghost: [
-    "text-slate-400 hover:text-white",
-    "hover:bg-slate-800/50",
-    "disabled:text-slate-600 disabled:bg-transparent",
+    "hover:bg-white/5",
+    "disabled:opacity-50 disabled:bg-transparent",
   ].join(" "),
   danger: [
     "bg-red-600 hover:bg-red-500 active:bg-red-700",
@@ -49,15 +58,12 @@ const variantClasses = {
     "hover:shadow-lg hover:shadow-emerald-900/30",
     "disabled:bg-slate-600 disabled:text-slate-400 disabled:shadow-none",
   ].join(" "),
-  // Glow variant - for CTAs with blue hover glow
   glow: [
-    "bg-blue-600 hover:bg-blue-500 active:bg-blue-700",
     "text-white font-medium",
     "shadow-md",
     "hover:shadow-glow-blue",
-    "disabled:bg-slate-600 disabled:text-slate-400 disabled:shadow-none",
+    "disabled:opacity-60 disabled:shadow-none",
   ].join(" "),
-  // Amber glow variant
   "glow-amber": [
     "bg-amber-600 hover:bg-amber-500 active:bg-amber-700",
     "text-white font-medium",
@@ -65,15 +71,6 @@ const variantClasses = {
     "hover:shadow-glow-amber",
     "disabled:bg-slate-600 disabled:text-slate-400 disabled:shadow-none",
   ].join(" "),
-};
-
-// Gradient overrides for buttons
-const gradientClasses = {
-  primary: "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600",
-  danger: "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600",
-  success: "bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600",
-  glow: "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600",
-  "glow-amber": "bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500",
 };
 
 const sizeClasses = {
@@ -84,9 +81,35 @@ const sizeClasses = {
   xl: "px-8 py-4 text-lg",
 };
 
+// Variants that pull their surface color from inline tokens (so consumers
+// without the Track D CSS vars still get a sensible default via var() fallback).
+type TokenisedVariant = "primary" | "secondary" | "ghost" | "glow";
+
+function getTokenisedStyle(variant: ButtonProps["variant"], gradient: boolean): React.CSSProperties {
+  switch (variant as TokenisedVariant) {
+    case "primary":
+    case "glow":
+      return gradient
+        ? { backgroundImage: `linear-gradient(to right, ${TOKEN_ACCENT_WARM}, ${TOKEN_ACCENT_WARM_HOVER})` }
+        : { backgroundColor: TOKEN_ACCENT_WARM };
+    case "secondary":
+      return {
+        backgroundColor: TOKEN_SURFACE_TILE,
+        borderColor: TOKEN_GLASS_BORDER,
+        color: TOKEN_TEXT_SECONDARY,
+      };
+    case "ghost":
+      return { color: TOKEN_TEXT_SECONDARY };
+    default:
+      return {};
+  }
+}
+
 /**
- * Unified Button component with aviation cockpit styling
- * Includes gradient and glow variants for premium CTAs
+ * Unified Button component.
+ * - Track D consumers: primary/secondary/ghost/glow use accent-warm / surface-tile tokens.
+ * - Legacy consumers (no CSS vars defined): same components render with blue-600/slate-800 fallbacks.
+ * Other variants (danger/success/glow-amber) are unchanged for backward compatibility.
  */
 export function Button({
   children,
@@ -103,26 +126,21 @@ export function Button({
   gradient = false,
 }: ButtonProps) {
   const isDisabled = disabled || loading;
-
-  // Apply gradient override if requested and supported
-  const supportsGradient = variant in gradientClasses;
-  const gradientOverride = gradient && supportsGradient 
-    ? gradientClasses[variant as keyof typeof gradientClasses] 
-    : "";
+  const tokenStyle = getTokenisedStyle(variant, gradient);
 
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={isDisabled}
+      style={tokenStyle}
       className={`
         inline-flex items-center justify-center
         font-medium rounded-lg
         transition-all duration-200 ease-out
-        focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-slate-900
+        focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black
         disabled:cursor-not-allowed
         ${variantClasses[variant]}
-        ${gradientOverride}
         ${sizeClasses[size]}
         ${fullWidth ? "w-full" : ""}
         ${className}
