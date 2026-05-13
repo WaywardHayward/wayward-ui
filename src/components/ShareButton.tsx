@@ -94,8 +94,10 @@ export function ShareButton({
 }: ShareButtonProps) {
   return (
     <button
+      type="button"
       onClick={onShare}
       disabled={disabled}
+      aria-label={showLabel ? undefined : label}
       style={getVariantStyle(variant)}
       className={`
         inline-flex items-center justify-center

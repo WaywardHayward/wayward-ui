@@ -1170,6 +1170,7 @@ function Us({
   return /* @__PURE__ */ e.jsx(
     "button",
     {
+      type: "button",
       onClick: s,
       disabled: o,
       "aria-label": a,
@@ -3858,8 +3859,10 @@ function Ts({
   return /* @__PURE__ */ e.jsxs(
     "button",
     {
+      type: "button",
       onClick: t,
       disabled: c,
+      "aria-label": l ? void 0 : n,
       style: Es(s),
       className: `
         inline-flex items-center justify-center
